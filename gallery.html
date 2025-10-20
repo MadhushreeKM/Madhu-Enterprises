@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery - Madhu Enterprises Stone & Sand Products. View our premium collection of natural pebbles, polished stones, river sand, and construction materials in Bangalore.">
+    <meta name="keywords" content="gallery, stone products, sand products, natural pebbles, polished stones, river sand, construction materials, Bangalore">
+    <meta name="author" content="Madhu Enterprises">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Gallery - Stone & Sand Products | Madhu Enterprises">
+    <meta property="og:description" content="Explore our gallery showcasing premium stone and sand products including natural pebbles, polished stones, river sand, and construction materials.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://madhuenterprises.com/gallery.html">
+    <meta property="og:image" content="https://madhuenterprises.com/images/gallery.jpg">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://madhuenterprises.com/gallery.html">
+    
+    <title>Gallery - Stone & Sand Products | Madhu Enterprises</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta name="color-scheme" content="light">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cursor Trail -->
+    <div class="cursor-trail"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img class="logo-image" src="images/Logo/Logo.png" alt="Madhu Enterprises Logo" loading="lazy">
+                <div>
+                    <h2>MADHU ENTERPRISES</h2>
+                    <span>Premium Stone & Sand Products</span>
+                </div>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="stone-products.html" class="nav-link">Stone Products</a>
+                <a href="sand-products.html" class="nav-link">Sand Products</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle" role="button" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header gallery">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Product Gallery</h1>
+                <p>Explore our premium collection of stone and sand products through our comprehensive gallery</p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Gallery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="stone">Stone Products</button>
+                <button class="filter-btn" data-filter="sand">Sand Products</button>
+                <button class="filter-btn" data-filter="construction">Construction</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Stone Products Gallery -->
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Stones/Natural Pebbles/Natural1.jpg" alt="Natural Pebbles Collection" loading="lazy" onclick="openLightbox('images/Stones/Natural Pebbles/Natural1.jpg', 'Natural Pebbles Collection', 'Beautiful collection of natural pebbles in various sizes and colors.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Natural Pebbles</h4>
+                        <p>Various sizes and colors</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Stones/Natural Pebbles/Natural2.jpg" alt="Natural Pebbles Variety" loading="lazy" onclick="openLightbox('images/Stones/Natural Pebbles/Natural2.jpg', 'Natural Pebbles Variety', 'Diverse collection showcasing different textures and natural colors.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Natural Variety</h4>
+                        <p>Mixed textures and colors</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Stones/Polished/P1.jpg" alt="Polished Pebbles" loading="lazy" onclick="openLightbox('images/Stones/Polished/P1.jpg', 'Polished Pebbles', 'High-gloss polished pebbles with mirror-like finish.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Polished Pebbles</h4>
+                        <p>High-gloss finish</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Stones/Polished/P2.jpg" alt="Polished Stones" loading="lazy" onclick="openLightbox('images/Stones/Polished/P2.jpg', 'Polished Stones', 'Premium polished stones perfect for modern landscaping.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Polished Stones</h4>
+                        <p>Modern landscaping</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Stones/Unpolished/UnP1.jpg" alt="Unpolished Pebbles" loading="lazy" onclick="openLightbox('images/Stones/Unpolished/UnP1.jpg', 'Unpolished Pebbles', 'Rustic unpolished pebbles with natural texture.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Unpolished Pebbles</h4>
+                        <p>Natural rustic texture</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Stones/Stone Crushed Chips/Ch1.jpg" alt="Stone Crushed Chips" loading="lazy" onclick="openLightbox('images/Stones/Stone Crushed Chips/Ch1.jpg', 'Stone Crushed Chips', 'High-quality crushed stone chips for construction and landscaping.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Crushed Chips</h4>
+                        <p>Construction grade</p>
+                    </div>
+                </div>
+
+                <!-- Local Gallery Items -->
+                <div class="gallery-item sand" data-category="sand">
+                    <img src="images/Gallery Images/Sand Gall 8.jpg" alt="Sand Gallery 8" loading="lazy" onclick="openLightbox('images/Gallery Images/Sand Gall 8.jpg', 'Sand Gallery', 'Premium sand product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Sand Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item sand" data-category="sand">
+                    <img src="images/Gallery Images/Sand Gall 9.jpg" alt="Sand Gallery 9" loading="lazy" onclick="openLightbox('images/Gallery Images/Sand Gall 9.jpg', 'Sand Gallery', 'Premium sand product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Sand Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gall 1.jpg" alt="Gallery Image 1" loading="lazy" onclick="openLightbox('images/Gallery Images/Gall 1.jpg', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gall 2.jpg" alt="Gallery Image 2" loading="lazy" onclick="openLightbox('images/Gallery Images/Gall 2.jpg', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gall 3.webp" alt="Gallery Image 3" loading="lazy" onclick="openLightbox('images/Gallery Images/Gall 3.webp', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gall 4.jpg" alt="Gallery Image 4" loading="lazy" onclick="openLightbox('images/Gallery Images/Gall 4.jpg', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gall 5.jpg" alt="Gallery Image 5" loading="lazy" onclick="openLightbox('images/Gallery Images/Gall 5.jpg', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gall 6.jpg" alt="Gallery Image 6" loading="lazy" onclick="openLightbox('images/Gallery Images/Gall 6.jpg', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gall 7.jpg" alt="Gallery Image 7" loading="lazy" onclick="openLightbox('images/Gallery Images/Gall 7.jpg', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <!-- Additional Product Images -->
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Stones/Natural Pebbles/Natural3.jpg" alt="Natural Pebbles Garden" loading="lazy" onclick="openLightbox('images/Stones/Natural Pebbles/Natural3.jpg', 'Natural Pebbles Garden', 'Natural pebbles used in garden landscaping.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Garden Pebbles</h4>
+                        <p>Landscaping use</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Stones/Polished/P3.jpg" alt="Polished Collection" loading="lazy" onclick="openLightbox('images/Stones/Polished/P3.jpg', 'Polished Collection', 'Complete collection of polished pebbles and stones.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Polished Collection</h4>
+                        <p>Complete range</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item sand" data-category="sand">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop" alt="Sports Ground" loading="lazy" width="400" height="300" onclick="openLightbox('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=600&fit=crop', 'Sports Ground', 'Specialized sand for cricket and hockey grounds.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Sports Ground</h4>
+                        <p>Cricket & Hockey</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item construction" data-category="construction">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop" alt="Building Foundation" loading="lazy" width="400" height="300" onclick="openLightbox('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop', 'Building Foundation', 'Quality sand and stone for foundation work.')">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Building Foundation</h4>
+                        <p>Foundation work</p>
+                    </div>
+                </div>
+
+                <!-- Newly added local images -->
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gal 9.jpg" alt="Stone Gallery 9" loading="lazy" onclick="openLightbox('images/Gallery Images/Gal 9.jpg', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item stone" data-category="stone">
+                    <img src="images/Gallery Images/Gal 10.jpg" alt="Stone Gallery 10" loading="lazy" onclick="openLightbox('images/Gallery Images/Gal 10.jpg', 'Stone Gallery', 'Premium stone product showcase.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Stone Product</h4><p>Showcase</p></div>
+                </div>
+
+                <div class="gallery-item sand" data-category="sand">
+                    <img src="images/Gallery Images/Ground Sand.jpg" alt="Ground Sand" loading="lazy" onclick="openLightbox('images/Gallery Images/Ground Sand.jpg', 'Ground Sand', 'Specialized sand for ground preparation.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Ground Sand</h4><p>Preparation</p></div>
+                </div>
+
+                <div class="gallery-item sand" data-category="sand">
+                    <img src="images/Gallery Images/Play area sand.jpg" alt="Play Area Sand" loading="lazy" onclick="openLightbox('images/Gallery Images/Play area sand.jpg', 'Play Area Sand', 'Soft sand for play areas and landscaping.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Play Area Sand</h4><p>Soft & Safe</p></div>
+                </div>
+
+
+                <!-- Bagged Sand (Gallery) -->
+                <div class="gallery-item sand" data-category="sand">
+                    <img src="images/Sands/Bags/Bags.jpg" alt="Bagged Sand" loading="lazy" onclick="openLightbox('images/Sands/Bags/Bags.jpg', 'Bagged Sand', 'Convenient bagged sand for easy transport and storage.')">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    <div class="gallery-info"><h4>Bagged Sand</h4><p>Convenient & Clean</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Interested in Our Products?</h2>
+                <p>Contact us today to discuss your requirements and get a customized quote for your project.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                    <a href="https://wa.me/919740161629" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Madhu Enterprises</h3>
+                    <p>Your trusted partner for premium stone and sand products in Bangalore. Quality guaranteed, delivery assured.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/919740161629" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="tel:+919740161629" class="social-link">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="stone-products.html">Stone Products</a></li>
+                        <li><a href="sand-products.html">Sand Products</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+919740161629">+91 9740161629</a>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>NG GOLLAHALLI, AM LAYOUT,<br>HENNUR MAIN RD, DODDAGUBBI,<br>BENGALURU, KARNATAKA 560077</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Business Hours</h4>
+                    <div class="business-hours">
+                       <div class="hours-item">
+                            <span>Monday - Saturday:</span>
+                            <span>9:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Sunday:</span>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Madhu Enterprises. All rights reserved.</p>
+                    <p>GST Number:29FVCPS7309E1Z9</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/919740161629" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chat with us</span>
+        </a>
+    </div>
+
+    <!-- Floating Call Button -->
+    <div class="floating-call">
+        <a href="tel:+919740161629">
+            <i class="fas fa-phone"></i>
+            <span>Call: 9740161629</span>
+        </a>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" aria-label="Close preview">&times;</span>
+            <div class="lightbox-media">
+                <img id="lightbox-image" src="" alt="">
+                <video id="lightbox-video" controls style="display: none;">
+                    <source src="" type="video/mp4">
+                </video>
+            </div>
+            <div class="lightbox-controls">
+                <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="lightbox-next" id="lightbox-next" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="lightbox-info">
+                <h4 id="lightbox-title"></h4>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
