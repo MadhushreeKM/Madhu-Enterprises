@@ -1,3 +1,95 @@
+// ===== ENHANCED LOADING SCREEN =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Add loading class to body
+    document.body.classList.add('loading');
+    
+    // Initialize lazy loading features
+    initLazyLoading();
+    initScrollReveal();
+    initImageLazyLoad();
+});
+
+window.addEventListener('load', function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    if (loadingScreen) {
+        // Hide immediately when page loads - no delay
+        loadingScreen.classList.add('hidden');
+        document.body.classList.remove('loading');
+        
+        // Remove from DOM after transition
+        setTimeout(() => {
+            loadingScreen.remove();
+        }, 300);
+    }
+});
+
+// ===== LAZY LOADING INITIALIZATION =====
+function initLazyLoading() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    fadeElements.forEach((element, index) => {
+        setTimeout(() => {
+            element.classList.add('visible');
+        }, index * 100);
+    });
+}
+
+// ===== SCROLL REVEAL ANIMATION =====
+function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    
+    const revealOnScroll = () => {
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('revealed');
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Check on initial load
+}
+
+// ===== IMAGE LAZY LOADING =====
+function initImageLazyLoad() {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    
+                    // Add loaded class when image loads
+                    img.addEventListener('load', () => {
+                        img.classList.add('loaded');
+                    });
+                    
+                    // If image is already cached, add loaded class immediately
+                    if (img.complete) {
+                        img.classList.add('loaded');
+                    }
+                    
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        lazyImages.forEach(img => {
+            img.classList.add('loaded');
+        });
+    }
+}
+
 // ===== CURSOR TRAIL ANIMATION =====
 class CursorTrail {
     constructor() {
