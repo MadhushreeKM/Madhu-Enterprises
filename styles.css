@@ -160,8 +160,7 @@ body {
     50% { opacity: 1; }
 }
 
-/* ===== LAZY LOADING ENHANCEMENTS ===== */
-/* Hide content initially */
+/* ===== FAST LOADING WITH SMOOTH ANIMATIONS ===== */
 body.loading {
     overflow: hidden;
 }
@@ -200,17 +199,17 @@ img[loading="lazy"].loaded {
     opacity: 1;
 }
 
-/* Instant loading - No delays */
-.hero { animation: fadeInUp 0.3s ease 0s both; }
-.features { animation: fadeInUp 0.3s ease 0s both; }
-.categories { animation: fadeInUp 0.3s ease 0s both; }
-.quick-quote { animation: fadeInUp 0.3s ease 0s both; }
-.contact-info { animation: fadeInUp 0.3s ease 0s both; }
+/* Fast section animations - No delays */
+.hero { animation: fadeInUp 0.4s ease 0s both; }
+.features { animation: fadeInUp 0.4s ease 0.1s both; }
+.categories { animation: fadeInUp 0.4s ease 0.15s both; }
+.quick-quote { animation: fadeInUp 0.4s ease 0.2s both; }
+.contact-info { animation: fadeInUp 0.4s ease 0.25s both; }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(15px);
     }
     to {
         opacity: 1;
@@ -221,8 +220,8 @@ img[loading="lazy"].loaded {
 /* Smooth scroll reveal */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease;
+    transform: translateY(30px);
+    transition: all 0.5s ease;
 }
 
 .scroll-reveal.revealed {
