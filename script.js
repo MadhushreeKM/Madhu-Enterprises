@@ -1,27 +1,9 @@
-// ===== ENHANCED LOADING SCREEN =====
+// ===== INITIALIZE ON PAGE LOAD =====
 document.addEventListener('DOMContentLoaded', function() {
-    // Add loading class to body
-    document.body.classList.add('loading');
-    
     // Initialize lazy loading features
     initLazyLoading();
     initScrollReveal();
     initImageLazyLoad();
-});
-
-window.addEventListener('load', function() {
-    const loadingScreen = document.getElementById('loading-screen');
-    
-    if (loadingScreen) {
-        // Hide immediately when page loads - no delay
-        loadingScreen.classList.add('hidden');
-        document.body.classList.remove('loading');
-        
-        // Remove from DOM after transition
-        setTimeout(() => {
-            loadingScreen.remove();
-        }, 300);
-    }
 });
 
 // ===== LAZY LOADING INITIALIZATION =====
