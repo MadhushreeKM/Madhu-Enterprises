@@ -29,8 +29,746 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css?v=20251102">
+    
+    <style>
+        /* FAQ Section Styling */
+        .faq-section {
+            padding: 4rem 1rem;
+            background: #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faq-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6, #3b82f6, #10b981, #f59e0b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.25rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .faq-question {
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            background: white;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8fafc;
+        }
+        
+        .faq-question h4 {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1e293b;
+            flex: 1;
+            padding-right: 1.5rem;
+        }
+        
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: #fef3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d97706;
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 0 1.5rem;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 2rem 2rem;
+        }
+        
+        .faq-answer p {
+            margin: 0 0 1rem 0;
+            color: #475569;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .faq-answer ul {
+            margin: 0.5rem 0 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+        
+        .faq-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            padding: 0.75rem 1.5rem;
+            background: #f59e0b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+        
+        .faq-contact-btn i {
+            font-size: 1.1em;
+        }
+        
+        .faq-contact-btn:hover {
+            background: #d97706;
+            transform: translateY(-1px);
+        }
+        
+        @media (max-width: 768px) {
+            .faq-container {
+                margin-top: 2rem;
+            }
+            
+            .faq-question {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .faq-question h4 {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .faq-answer {
+                padding: 0 1.5rem;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 0 1.5rem 1.5rem;
+            }
+            
+            .faq-contact-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.8rem 1.25rem;
+            }
+        }
+            
+            .faq-contact-btn {
+                width: 100%;
+                padding: 0.7rem;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .faq-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Form Styling */
+        .contact-form {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-header h2 {
+            font-size: 2.2rem;
+            color: #1a365d;
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .form-header h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .form-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-title i {
+            color: #f59e0b;
+        }
+        
+        /* Floating Label Animation */
+        .floating-label {
+            position: relative;
+            margin-top: 2rem;
+        }
+        
+        .floating-input, .floating-select, .floating-textarea, .floating-select-multiple {
+            width: 100%;
+            padding: 1.8rem 1rem 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            background: #f8fafc;
+            font-size: 1.05rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            z-index: 2;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            box-sizing: border-box;
+            height: auto;
+            line-height: 1.5;
+            color: #1e293b;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+        
+        .floating-input:focus, 
+        .floating-select:focus, 
+        .floating-textarea:focus,
+        .floating-select-multiple:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+            background: #ffffff;
+        }
+        
+        /* Placeholder text styling */
+        .floating-input::placeholder,
+        .floating-textarea::placeholder {
+            color: #94a3b8;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-input:focus::placeholder,
+        .floating-textarea:focus::placeholder {
+            opacity: 0.5;
+        }
+        
+        /* Fix for text input padding */
+        .floating-input, .floating-textarea {
+            padding-right: 1rem;
+        }
+        
+        /* Style for multiple select */
+        .floating-select-multiple {
+            padding-top: 1.2rem;
+            padding-bottom: 0.5rem;
+            min-height: 80px;
+        }
+        
+        .floating-textarea {
+            min-height: 120px;
+            padding-top: 1.5rem;
+            padding-right: 1rem;
+            resize: vertical;
+        }
+        
+        /* Fix for select elements */
+        .floating-select, .floating-select-multiple {
+            padding-top: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* Fix for multiple select */
+        .floating-select-multiple {
+            min-height: 100px;
+            padding-top: 1.8rem;
+        }
+        
+        /* Fix for empty select */
+        select:required:invalid {
+            color: #94a3b8;
+        }
+        
+        /* Fix for text in inputs */
+        .floating-input, .floating-select, .floating-textarea, .floating-select-multiple {
+            color: #1e293b;
+        }
+        
+        .floating-label label {
+            position: absolute;
+            top: -0.6rem;
+            left: 0.8rem;
+            right: auto;
+            color: #64748b;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 3;
+            background: white;
+            padding: 0 0.5rem;
+            border-radius: 12px;
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .floating-label.focused label,
+        .floating-label.has-value label {
+            color: #f59e0b;
+            font-weight: 600;
+            transform: translateY(-50%);
+            background: linear-gradient(0deg, #fff 50%, #f8fafc 50%);
+            padding: 0 0.8rem;
+        }
+        
+        /* Keep labels always at the top */
+        .floating-input:focus + label,
+        .floating-input:not(:placeholder-shown) + label,
+        .floating-select:focus + label,
+        .floating-select:not([value=""]) + label,
+        .floating-textarea:focus + label,
+        .floating-textarea:not(:placeholder-shown) + label,
+        .floating-select-multiple:focus + label,
+        .floating-select-multiple:not(:placeholder-shown) + label {
+            /* Already styled by default */
+        }
+        
+        .floating-label .icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 1.2rem;
+            color: #94a3b8;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+            pointer-events: none;
+            width: 1.5rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .floating-input:focus ~ .icon,
+        .floating-select:focus ~ .icon,
+        .floating-textarea:focus ~ .icon,
+        .floating-select-multiple:focus ~ .icon {
+            color: #f59e0b;
+            transform: scale(1.1);
+        }
+        
+        .floating-label .underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: all 0.5s ease;
+            z-index: 3;
+        }
+        
+        .floating-input:focus ~ .underline,
+        .floating-select:focus ~ .underline,
+        .floating-textarea:focus ~ .underline {
+            width: 100%;
+        }
+        
+        .floating-input:focus ~ .icon,
+        .floating-select:focus ~ .icon,
+        .floating-textarea:focus ~ .icon {
+            color: var(--primary-blue);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        /* Button Animations */
+        .btn-whatsapp, .btn-call {
+            position: relative;
+            overflow: hidden;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.5s ease;
+            z-index: 1;
+            border: none;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            width: 100%;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+        }
+        
+        .btn-call {
+            background: linear-gradient(45deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+        
+        /* Golden Shine Effect */
+        .btn-whatsapp::before, .btn-call::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn-whatsapp:hover::before, .btn-call:hover::before {
+            left: 100%;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-call:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Button Icons */
+        .btn-whatsapp i, .btn-call i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-whatsapp:hover i, .btn-call:hover i {
+            transform: scale(1.2);
+        }
+        
+        .btn-submit .btn-text {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit .btn-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%) translateX(1rem);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .btn-submit:hover .btn-text {
+            transform: translateX(-0.5rem);
+        }
+        
+        .btn-submit:hover .btn-icon {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+        
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-blue), var(--royal-blue));
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+        
+        .btn-submit:hover::before {
+            background: linear-gradient(45deg, var(--royal-blue), var(--primary-blue));
+        }
+        
+        .btn-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            display: block;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Social Buttons */
+        .btn-social {
+            position: relative;
+            overflow: hidden;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        
+        .btn-social .btn-text {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .btn-social:active .btn-wave {
+            animation: ripple 0.6s linear;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Form Group Animation */
+        .form-group {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .form-group {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .form-group:hover {
+            transform: translateY(-3px);
+        }
+        
+        .form-group:hover .floating-input,
+        .form-group:hover .floating-select,
+        .form-group:hover .floating-textarea,
+        .form-group:hover .floating-select-multiple {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        /* Form Actions */
+        .form-actions {
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+        
+        .quick-contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .quick-contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .btn-whatsapp,
+            .btn-call {
+                width: auto;
+                min-width: 220px;
+            }
+        }
+        
+        /* Form Validation */
+        .form-message {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            display: none;
+        }
+        
+        .form-message.success {
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+            display: block;
+        }
+        
+        .form-message.error {
+            background: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+            display: block;
+        }
+        
+        .form-message i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Character Counter */
+        .char-counter {
+            position: absolute;
+            right: 1rem;
+            bottom: 0.5rem;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-textarea-wrapper {
+            position: relative;
+        }
+        
+        /* Loading State */
+        .form-loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        
+        .form-loading:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.7);
+            z-index: 10;
+            border-radius: 8px;
+        }
+        
+        .form-loading:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            margin: -12px 0 0 -12px;
+            border: 3px solid #f59e0b;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            z-index: 11;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
     
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
@@ -110,81 +848,117 @@
             <div class="contact-content">
                 <!-- Contact Form -->
                 <div class="contact-form-container">
-                    <div class="form-header">
+                    <div class="form-header" data-aos="fade-up">
                         <h2>Get a Quote</h2>
                         <p>Fill out the form below and we'll get back to you with a customized quote for your project</p>
                     </div>
                     
-                    <form id="contact-form" class="contact-form">
+                    <form id="quoteForm" class="contact-form" novalidate>
+                        <!-- Row 1: Name & Phone -->
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required>
+                            <div class="form-group" data-aos="fade-up" data-aos-delay="100">
+                                <div class="floating-label">
+                                    <input type="text" id="fullName" name="fullName" class="floating-input" placeholder="Enter your full name" required>
+                                    <label for="fullName">Full Name</label>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required>
+                            
+                            <div class="form-group" data-aos="fade-up" data-aos-delay="150">
+                                <div class="floating-label">
+                                    <input type="tel" id="phone" name="phone" class="floating-input" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+                                    <label for="phone">Phone Number</label>
+                                </div>
                             </div>
                         </div>
                         
+                        <!-- Row 2: Email & Product Category -->
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email">
+                            <div class="form-group" data-aos="fade-up" data-aos-delay="200">
+                                <div class="floating-label">
+                                    <input type="email" id="email" name="email" class="floating-input" placeholder="Enter your email address">
+                                    <label for="email">Email Address</label>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="category">Product Category *</label>
-                                <select id="category" name="category" required>
-                                    <option value="">Select Product Category</option>
-                                    <option value="stone">Stone Products</option>
-                                    <option value="sand">Sand Products</option>
-                                    <option value="both">Both Stone & Sand</option>
-                                    <option value="consultation">General Consultation</option>
-                                    <option value="consultation">Other</option>
-                                </select>
+                            
+                            <div class="form-group" data-aos="fade-up" data-aos-delay="250">
+                                <div class="floating-label">
+                                    <select id="productCategory" name="productCategory" class="floating-select" required>
+                                        <option value="" disabled selected></option>
+                                        <option value="Stone Products">Stone Products</option>
+                                        <option value="Sand Products">Sand Products</option>
+                                        <option value="Both Stone & Sand">Both Stone & Sand</option>
+                                        <option value="General Consultation">General Consultation</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <label for="productCategory">Product Category</label>
+                                    <div class="icon">
+                                        <i class="fas fa-tag"></i>
+                                    </div>
+                                    <div class="underline"></div>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="form-group" id="product-selection" style="display: none;">
-                            <label for="products">Specific Products</label>
-                            <select id="products" name="products" multiple>
-                                <!-- Options will be populated based on category selection -->
-                            </select>
-                            <small>Hold Ctrl/Cmd to select multiple products</small>
+                        <!-- Specific Products (Multi-select) -->
+                        <div class="form-group" data-aos="fade-up" data-aos-delay="300">
+                                <div class="floating-label">
+                                    <select id="specificProducts" name="specificProducts[]" class="floating-select" multiple>
+                                        <option value="" disabled selected>Select products</option>
+                                        <option value="Natural Pebbles">Natural Pebbles</option>
+                                        <option value="Polished Pebbles">Polished Pebbles</option>
+                                        <option value="Unpolished Pebbles">Unpolished Pebbles</option>
+                                        <option value="Stone Crushed Chips">Stone Crushed Chips</option>
+                                        <option value="Multi-color Pebbles">Multi-color Pebbles</option>
+                                    </select>
+                                    <label for="specificProducts">Specific Products <small>(Hold Ctrl/Cmd to select multiple)</small></label>
+                                </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="quantity">Estimated Quantity</label>
-                            <input type="text" id="quantity" name="quantity" placeholder="e.g., 10 tons, 100 cft, etc.">
+                        <!-- Estimated Quantity -->
+                        <div class="form-group" data-aos="fade-up" data-aos-delay="350">
+                                <div class="floating-label">
+                                    <input type="text" id="quantity" name="quantity" class="floating-input" placeholder="Enter estimated quantity (e.g., 100 kg, 1 ton)">
+                                    <label for="quantity">Estimated Quantity</label>
+                                </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="project-type">Project Type</label>
-                            <select id="project-type" name="project-type">
-                                <option value="">Select Project Type</option>
-                                <option value="residential">Residential Construction</option>
-                                <option value="commercial">Commercial Construction</option>
-                                <option value="landscaping">Landscaping</option>
-                                <option value="renovation">Renovation</option>
-                                <option value="other">Other</option>
-                            </select>
+                        <!-- Project Type -->
+                        <div class="form-group" data-aos="fade-up" data-aos-delay="400">
+                                <div class="floating-label">
+                                    <select id="projectType" name="projectType" class="floating-select" required>
+                                        <option value="" disabled selected>Select Project Type</option>
+                                        <option value="Residential Construction">Residential Construction</option>
+                                        <option value="Commercial Construction">Commercial Construction</option>
+                                        <option value="Landscaping">Landscaping</option>
+                                        <option value="Renovation">Renovation</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <label for="projectType">Project Type</label>
+                                </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="message">Project Details / Message *</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Please describe your project requirements, timeline, and any specific needs..." required></textarea>
+                        <!-- Project Details / Message -->
+                        <div class="form-group" data-aos="fade-up" data-aos-delay="450">
+                                <div class="floating-label">
+                                    <textarea id="projectDetails" name="projectDetails" class="floating-textarea" placeholder="Enter your project details or message" rows="4" required></textarea>
+                                    <label for="projectDetails">Project Details / Message</label>
+                                </div>
                         </div>
                         
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">
+                        <div class="form-message" id="formMessage"></div>
+                    
+                    <div class="form-actions" data-aos="fade-up" data-aos-delay="500">
+                        <div class="quick-contact-buttons">
+                            <a href="#" id="whatsappBtn" class="btn-whatsapp" data-aos="fade-up" data-aos-delay="600">
                                 <i class="fab fa-whatsapp"></i>
-                                Send WhatsApp Quote
-                            </button>
-                            <button type="button" class="btn btn-secondary" onclick="callNow()">
+                                <span>WhatsApp Quote</span>
+                            </a>
+                            <a href="tel:+919740161629" class="btn-call" data-aos="fade-up" data-aos-delay="650">
                                 <i class="fas fa-phone"></i>
-                                Call Now
-                            </button>
+                                <span>Call Now: +91 97401 61629</span>
+                            </a>
                         </div>
+                    </div>
                     </form>
                 </div>
                 
@@ -316,71 +1090,244 @@
 
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section class="faq-section" id="faq">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Need Help?</span>
                 <h2>Frequently Asked Questions</h2>
-                <p>Common questions about our products and services</p>
+                <p class="max-w-2xl mx-auto">Find answers to common questions about our products, services, and ordering process. Can't find what you're looking for? <a href="#contact" class="text-gold hover:underline">Contact our team</a> for assistance.</p>
             </div>
-            <div class="faq-grid">
+            
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What types of stone products do you offer?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a comprehensive range of premium stone products including:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>Granite Stone Aggregates (6mm, 12mm, 20mm, 40mm)</li>
+                            <li>Stone Dust & Grit</li>
+                            <li>Jelly Stones (10mm, 20mm, 40mm)</li>
+                            <li>Construction Stones</li>
+                            <li>Landscaping Stones</li>
+                        </ul>
+                        <p class="mt-3">All our stones are sourced from trusted quarries and undergo strict quality checks.</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhuenterprises.service@gmail.com&su=Inquiry%20About%20Your%20Products&body=Hello%20Madhu%20Enterprises%2C%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20your%20products.%20Please%20provide%20more%20information%20about%3A%0D%0A%0D%0A-%20Product%20of%20interest%3A%0D%0A-%20Required%20quantity%3A%0D%0A-%20Delivery%20location%3A%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D" class="faq-contact-btn">
+                            <i class="fas fa-comment-dots"></i> Chat with Us
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What sand products are available?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our premium sand products include:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>River Sand (Coarse & Fine)</li>
+                            <li>M-Sand (Manufactured Sand)</li>
+                            <li>Pit Sand</li>
+                            <li>Plastering Sand</li>
+                            <li>Concrete Sand</li>
+                        </ul>
+                        <p class="mt-3">Each type is carefully processed to meet construction standards.</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhuenterprises.service@gmail.com&su=Inquiry%20About%20Your%20Products&body=Hello%20Madhu%20Enterprises%2C%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20your%20products.%20Please%20provide%20more%20information%20about%3A%0D%0A%0D%0A-%20Product%20of%20interest%3A%0D%0A-%20Required%20quantity%3A%0D%0A-%20Delivery%20location%3A%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D" class="faq-contact-btn">
+                            <i class="fas fa-comment-dots"></i> Chat with Us
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <h4>What is the minimum order quantity?</h4>
-                        <i class="fas fa-chevron-down"></i>
+                        <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>We have flexible minimum order quantities. For stone products, minimum is usually 1 ton, and for sand products, minimum is 1 cubic foot. Contact us for specific requirements.</p>
+                        <p>Our minimum order quantities are designed to be flexible:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li><strong>Stone Products:</strong> Minimum 5 kg</li>
+                            <li><strong>Sand Products:</strong> Minimum 1 cubic foot (CFT)</li>
+                            <li><strong>Bulk Orders:</strong> Custom pricing available for orders above 10 tons</li>
+                        </ul>
+                        <p class="mt-3">For specific requirements or custom orders, please contact our sales team.</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhuenterprises.service@gmail.com&su=Inquiry%20About%20Your%20Products&body=Hello%20Madhu%20Enterprises%2C%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20your%20products.%20Please%20provide%20more%20information%20about%3A%0D%0A%0D%0A-%20Product%20of%20interest%3A%0D%0A-%20Required%20quantity%3A%0D%0A-%20Delivery%20location%3A%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D" class="faq-contact-btn">
+                            <i class="fas fa-comment-dots"></i> Chat with Us
+                        </a>
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Do you provide delivery services?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we provide delivery services across Bangalore and surrounding areas. Delivery charges depend on location and quantity. Contact us for delivery quotes.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>What payment methods do you accept?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We accept cash, bank transfers, UPI payments, and major credit/debit cards. Payment terms can be discussed based on order size and customer requirements.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>How can I get a quote for my project?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>You can get a quote by filling out our contact form, calling us at +91 9740161629, or sending a WhatsApp message. We typically respond within 2-4 hours.</p>
-                    </div>
-                </div>
-                
+                <!-- FAQ Item 4 -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <h4>Do you offer bulk discounts?</h4>
-                        <i class="fas fa-chevron-down"></i>
+                        <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we offer competitive bulk discounts for large orders. The discount percentage depends on the quantity and type of products. Contact us for detailed pricing.</p>
+                        <p>Yes, we offer competitive bulk pricing for large orders:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>5-10 tons: 5% discount</li>
+                            <li>10-20 tons: 7.5% discount</li>
+                            <li>20+ tons: Up to 15% discount (custom quote)</li>
+                        </ul>
+                        <p class="mt-3">For large construction projects, we can create custom pricing packages. Contact our sales team for a personalized quote.</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhuenterprises.service@gmail.com&su=Inquiry%20About%20Your%20Products&body=Hello%20Madhu%20Enterprises%2C%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20your%20products.%20Please%20provide%20more%20information%20about%3A%0D%0A%0D%0A-%20Product%20of%20interest%3A%0D%0A-%20Required%20quantity%3A%0D%0A-%20Delivery%20location%3A%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D" class="faq-contact-btn">
+                            <i class="fas fa-comment-dots"></i> Chat with Us
+                        </a>
                     </div>
                 </div>
                 
+                <!-- FAQ Item 5 -->
                 <div class="faq-item">
                     <div class="faq-question">
+                        <h4>Do you provide delivery services?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer reliable delivery services with the following features:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li><strong>Coverage Area:</strong> Throughout Bangalore and surrounding areas</li>
+                            <li><strong>Delivery Time:</strong> 24-48 hours for standard orders</li>
+                            <li><strong>Same-Day Delivery:</strong> Available for urgent orders (additional charges apply)</li>
+                            <li><strong>Vehicle Options:</strong> 1-ton to 10-ton capacity trucks available</li>
+                        </ul>
+                        <p class="mt-3">Delivery charges vary based on location and order size. Contact us for a delivery quote.</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhuenterprises.service@gmail.com&su=Inquiry%20About%20Your%20Products&body=Hello%20Madhu%20Enterprises%2C%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20your%20products.%20Please%20provide%20more%20information%20about%3A%0D%0A%0D%0A-%20Product%20of%20interest%3A%0D%0A-%20Required%20quantity%3A%0D%0A-%20Delivery%20location%3A%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D" class="faq-contact-btn">
+                            <i class="fas fa-comment-dots"></i> Chat with Us
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 - Payment Methods -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What payment methods do you accept?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer multiple convenient payment options:</p>
+                        <div class="payment-methods-grid">
+                            <div class="payment-method">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <div>
+                                    <h5>Cash on Delivery</h5>
+                                    <p class="text-sm text-gray-600">Pay when your order is delivered</p>
+                                </div>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-mobile-alt"></i>
+                                <div>
+                                    <h5>UPI Payments</h5>
+                                    <p class="text-sm text-gray-600">Google Pay, PhonePe, Paytm, BHIM, etc.</p>
+                                </div>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <h5>Bank Transfer</h5>
+                                    <p class="text-sm text-gray-600">NEFT/RTGS/IMPS transfers</p>
+                                </div>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <h5>Cards</h5>
+                                    <p class="text-sm text-gray-600">Credit/Debit cards (Visa, Mastercard, Rupay)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm text-gray-600">For large orders, we can discuss custom payment terms including partial payments and credit options for regular customers.</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhuenterprises.service@gmail.com&su=Inquiry%20About%20Payment%20Methods&body=Hello%20Madhu%20Enterprises%2C%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20payment%20options%20for%20my%20order.%0D%0A%0D%0AOrder%20Details%3A%0D%0A-%20Product%3A%0D%0A-%20Quantity%3A%0D%0A-%20Delivery%20Address%3A%0D%0A%0D%0APlease%20let%20me%20know%20the%20available%20payment%20options%20for%20this%20order.%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D" class="faq-contact-btn">
+                            <i class="fas fa-comment-dots"></i> Chat with Us
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
                         <h4>Are your products quality certified?</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, all our products meet industry standards and are quality tested. We provide quality certificates and can arrange third-party testing if required.</p>
+                        <p>Yes, quality is our top priority. Our products meet or exceed industry standards:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>ISO 9001:2015 Certified Quality Management</li>
+                            <li>Bureau of Indian Standards (BIS) Certified</li>
+                            <li>Regular quality control checks at multiple stages</li>
+                            <li>Third-party testing reports available upon request</li>
+                        </ul>
+                        <p class="mt-3">We maintain detailed quality records and can provide material test certificates for your projects.</p>
                     </div>
+                </div>
+                
+                <div class="faq-item" data-category="ordering">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <h4>How can I get a quote for my project?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Getting a quote is easy. Choose the most convenient method:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                            <div class="quote-method">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h5>Online Form</h5>
+                                    <p class="text-sm text-gray-600">Fill out our <a href="#contact-form" class="text-gold hover:underline">contact form</a> with your requirements</p>
+                                </div>
+                            </div>
+                            <div class="quote-method">
+                                <i class="fab fa-whatsapp"></i>
+                                <div>
+                                    <h5>WhatsApp</h5>
+                                    <p class="text-sm text-gray-600">Message us at <a href="https://wa.me/919740161629" class="text-gold hover:underline">+91 9740161629</a></p>
+                                </div>
+                            </div>
+                            <div class="quote-method">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h5>Phone Call</h5>
+                                    <p class="text-sm text-gray-600">Call us at <a href="tel:+919740161629" class="text-gold hover:underline">+91 9740161629</a></p>
+                                </div>
+                            </div>
+                            <div class="quote-method">
+                                <i class="fas fa-store"></i>
+                                <div>
+                                    <h5>Visit Us</h5>
+                                    <p class="text-sm text-gray-600">Get a personal consultation at our office</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4">For accurate pricing, please provide:</p>
+                        <ul class="list-disc pl-5 mt-1 space-y-1">
+                            <li>Type and quantity of materials needed</li>
+                            <li>Delivery address</li>
+                            <li>Preferred delivery date</li>
+                            <li>Any special requirements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-cta mt-16 mb-8 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Still have questions?</h3>
+                    <p class="text-gray-600 mb-8 text-lg max-w-2xl mx-auto">Our team is here to help you with any questions about our products, pricing, or services.</p>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhuenterprises.service@gmail.com&su=Inquiry%20About%20Your%20Products&body=Hello%20Madhu%20Enterprises%2C%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20your%20products%20and%20services.%20Please%20provide%20more%20information%20about%3A%0D%0A%0D%0A-%20Product/Service%20of%20interest%3A%0D%0A-%20Required%20quantity%3A%0D%0A-%20Delivery%20location%3A%0D%0A-%20Any%20other%20details%3A%0D%0A%0D%0AThank%20you%2C%0D%0A%5BYour%20Name%5D" 
+                       class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <i class="fas fa-comment-dots mr-2"></i> Chat with Us Now
+                    </a>
                 </div>
             </div>
         </div>
@@ -459,7 +1406,218 @@
         </a>
     </div>
 
-    <!-- JavaScript -->
-    <script src="script.js?v=20251102"></script>
+    <!-- FAQ JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all FAQ items
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        // Function to toggle FAQ item
+        function toggleFAQ(question) {
+            const item = question.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const icon = question.querySelector('.faq-icon');
+            
+            // Toggle active class on the item
+            const isActive = item.classList.toggle('active');
+            
+            // Toggle answer visibility
+            if (answer) {
+                if (isActive) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.textContent = '-';
+                } else {
+                    answer.style.maxHeight = '0';
+                    icon.textContent = '+';
+                }
+            }
+            
+            // Close other FAQs
+            faqItems.forEach(faq => {
+                if (faq !== item) {
+                    faq.classList.remove('active');
+                    const otherAnswer = faq.querySelector('.faq-answer');
+                    const otherIcon = faq.querySelector('.faq-icon');
+                    if (otherAnswer) otherAnswer.style.maxHeight = '0';
+                    if (otherIcon) otherIcon.textContent = '+';
+                }
+            });
+        }
+        
+        // Initialize FAQ items
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            // Set initial state
+            if (answer) {
+                answer.style.maxHeight = '0';
+                answer.style.overflow = 'hidden';
+                answer.style.transition = 'max-height 0.3s ease-in-out';
+            }
+            
+            // Add click event to question
+            if (question) {
+                question.addEventListener('click', function() {
+                    toggleFAQ(this);
+                });
+                
+                // Keyboard support
+                question.setAttribute('tabindex', '0');
+                question.setAttribute('role', 'button');
+                question.setAttribute('aria-expanded', 'false');
+                
+                question.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFAQ(this);
+                    }
+                });
+            }
+        });
+        
+        // Open first FAQ by default on desktop
+        if (window.innerWidth > 768 && faqItems.length > 0) {
+            const firstFAQ = faqItems[0];
+            const answer = firstFAQ.querySelector('.faq-answer');
+            const icon = firstFAQ.querySelector('.faq-icon');
+            firstFAQ.classList.add('active');
+            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+            if (icon) icon.textContent = '-';
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            document.querySelectorAll('.faq-item.active .faq-answer').forEach(answer => {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            });
+        });
+    });
+    
+    // Global scrollToContact function for buttons
+    function scrollToContact() {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+    </script>
+    </script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Floating label initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add focus/blur events for floating labels
+            const inputs = document.querySelectorAll('.floating-input, .floating-select, .floating-textarea');
+            
+            inputs.forEach(input => {
+                // Check if input has value on load
+                if (input.value) {
+                    input.dispatchEvent(new Event('input'));
+                }
+                
+                // Add focus effect
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                // Add blur effect
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+                
+                // Trigger input event for existing values
+                if (input.value) {
+                    input.dispatchEvent(new Event('input'));
+                }
+            });
+            
+            // Button particle effect
+            const submitBtn = document.querySelector('.btn-submit');
+            if (submitBtn) {
+                submitBtn.addEventListener('mouseenter', createParticles);
+            }
+            
+            function createParticles(e) {
+                const btnRect = this.getBoundingClientRect();
+                const particles = [];
+                const particleCount = 4;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('span');
+                    particle.className = 'particle';
+                    
+                    const size = Math.random() * 10 + 5;
+                    const posX = Math.random() * btnRect.width;
+                    const posY = Math.random() * btnRect.height;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${posX}px`;
+                    particle.style.top = `${posY}px`;
+                    
+                    this.querySelector('.btn-particles').appendChild(particle);
+                    particles.push(particle);
+                    
+                    // Animate particles
+                    animateParticle(particle, btnRect);
+                }
+                
+                // Remove particles after animation
+                setTimeout(() => {
+                    particles.forEach(particle => {
+                        if (particle && particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    });
+                }, 1000);
+            }
+            
+            function animateParticle(particle, btnRect) {
+                const startX = parseFloat(particle.style.left);
+                const startY = parseFloat(particle.style.top);
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 50 + 50;
+                const duration = Math.random() * 1000 + 500;
+                
+                const endX = startX + Math.cos(angle) * distance;
+                const endY = startY + Math.sin(angle) * distance;
+                
+                const keyframes = [
+                    { 
+                        transform: 'translate(0, 0) scale(1)',
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translate(${endX - startX}px, ${endY - startY}px) scale(0)`,
+                        opacity: 0 
+                    }
+                ];
+                
+                const timing = {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                };
+                
+                particle.animate(keyframes, timing);
+            }
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
