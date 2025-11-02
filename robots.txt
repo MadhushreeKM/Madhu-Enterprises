@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pebblesriversand.in/sitemap.xml
