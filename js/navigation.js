@@ -42,6 +42,16 @@ class MobileNavigation {
         this.handleScroll();
         window.addEventListener('scroll', () => this.handleScroll());
         
+        // Keep CSS var --navbar-height updated so headers never get covered
+        const adjustNavbarHeight = () => {
+            const h = this.navbar ? this.navbar.offsetHeight : 80;
+            document.documentElement.style.setProperty('--navbar-height', h + 'px');
+        };
+        adjustNavbarHeight();
+        window.addEventListener('resize', adjustNavbarHeight);
+        // Also adjust when fonts or layout change
+        new MutationObserver(adjustNavbarHeight).observe(this.navbar, { childList: true, subtree: true });
+
         // Close menu when resizing to desktop
         window.addEventListener('resize', () => {
             if (window.innerWidth > 1024 && this.isOpen) {

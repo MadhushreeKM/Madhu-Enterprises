@@ -176,6 +176,12 @@ img[loading="lazy"].loaded {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(251, 191, 36, 0.2);
     z-index: 1000;
+}
+
+/* Ensure the page content sits below the fixed navbar using the measured navbar height */
+body {
+    padding-top: var(--navbar-height, 80px);
+}
     transition: all var(--transition-smooth);
 }
 
@@ -3212,5 +3218,55 @@ a:focus {
     
     .nav-logo h2 {
         font-size: 1.5rem;
+    }
+}
+
+/* Extra small screen tweaks to prevent header truncation on narrow phones */
+@media (max-width: 480px) {
+    .nav-container {
+        height: auto;
+        padding: 0.5rem 0.75rem;
+        align-items: center;
+    }
+
+    .nav-logo .logo-image {
+        width: 36px;
+        height: 36px;
+    }
+
+    .nav-logo h2 {
+        font-size: 1rem;
+        line-height: 1.15;
+        white-space: normal;
+        word-break: break-word;
+        margin-bottom: 0;
+    }
+
+    .nav-logo span {
+        font-size: 0.72rem;
+    }
+
+    /* Make sure the hero/page-header sits below the navbar using the measured nav height */
+    .hero, .page-header {
+        padding-top: calc(var(--navbar-height, 80px) + 20px) !important;
+    }
+
+    /* On tiny screens, avoid vertically centering the hero so title won't be hidden */
+    .hero {
+        align-items: flex-start !important;
+        padding-bottom: 2.5rem;
+    }
+
+    .hero-content { padding-top: 0.6rem; }
+
+    /* Reduce hero/page header typography on very small screens to avoid overlap */
+    .page-header-content h1, .hero h1 {
+        font-size: 1.4rem; /* smaller so headings wrap cleanly */
+        line-height: 1.08;
+        margin-bottom: 0.45rem;
+    }
+
+    .page-header-content p, .hero p {
+        font-size: 0.9rem;
     }
 }

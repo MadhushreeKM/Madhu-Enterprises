@@ -4,6 +4,22 @@ document.addEventListener('DOMContentLoaded', function() {
     initLazyLoading();
     initScrollReveal();
     initImageLazyLoad();
+
+    // Keep CSS var --navbar-height in sync so headers clear the fixed navbar
+    const adjustNavbarHeight = () => {
+        const nav = document.querySelector('.navbar');
+        if (!nav) return;
+        const h = nav.offsetHeight || 80;
+        document.documentElement.style.setProperty('--navbar-height', h + 'px');
+    };
+    adjustNavbarHeight();
+
+    // Recompute on resize, scroll and small DOM changes (menu open/close)
+    window.addEventListener('resize', adjustNavbarHeight);
+    window.addEventListener('scroll', adjustNavbarHeight);
+    setTimeout(adjustNavbarHeight, 500); // after fonts/images settle
+    const navEl = document.querySelector('.navbar');
+    if (navEl) new MutationObserver(adjustNavbarHeight).observe(navEl, { attributes: true, childList: true, subtree: true });
 });
 
 // ===== LAZY LOADING INITIALIZATION =====

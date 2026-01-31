@@ -226,6 +226,66 @@
     }
 }
 
+/* Small-screen tweaks: allow logo text to wrap and avoid clipping */
+@media (max-width: 480px) {
+    :root { --nav-height: auto; }
+
+    .navbar {
+        height: auto;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .nav-container {
+        align-items: center;
+        padding: 0 0.75rem;
+    }
+
+    .nav-logo, .logo-text {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* When the logo text is a nested div (no .logo-text class) ensure it stacks */
+    .nav-logo > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo-text {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Apply wrapping and reduced sizes for both .logo-text and .nav-logo variants */
+    .logo-text h2,
+    .nav-logo h2,
+    .nav-logo > div h2 {
+        font-size: 1rem;
+        line-height: 1.15;
+        white-space: normal;
+        word-break: break-word;
+        margin-bottom: 0;
+    }
+
+    .logo-text span,
+    .nav-logo span,
+    .nav-logo > div span {
+        font-size: 0.72rem;
+    }
+
+    .logo-img,
+    .nav-logo .logo-image {
+        height: 36px;
+        width: 36px;
+    }
+
+    .nav-toggle {
+        margin-left: auto;
+    }
+}
+
 /* Scrolled State */
 .navbar.scrolled {
     height: 70px;
